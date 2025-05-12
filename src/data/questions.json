@@ -1,0 +1,107 @@
+{
+  "quizTitle": "Interaktives Beteiligungs-Quiz",
+  "sections": [
+    {
+      "id": "s1",
+      "slug": "beteiligung",
+      "title": "Beteiligung",
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Welche Stufe der Beteiligungsleiter beschreibt deine aktuelle Situation am besten?",
+          "type": "singleChoice",
+          "options": [
+            { "id": "opt1", "text": "2. Dekoration", "value": "dekoration" },
+            { "id": "opt2", "text": "3. Alibi-Teilnahme", "value": "alibi" },
+            { "id": "opt3", "text": "4. Teilhabe", "value": "teilhabe" },
+            { "id": "opt4", "text": "5. Information", "value": "information" },
+            { "id": "opt5", "text": "6. Mitwirkung", "value": "mitwirkung" },
+            { "id": "opt6", "text": "7. Mitbestimmung", "value": "mitbestimmung" },
+            { "id": "opt7", "text": "8. Selbstbestimmung", "value": "selbstbestimmung" }
+          ]
+        },
+        {
+          "id": "q2",
+          "text": "Spielt Beteiligung bereits eine Rolle?",
+          "type": "singleChoice",
+          "options": [
+            { "id": "opt1", "text": "Ja!", "value": "ja" },
+            { "id": "opt2", "text": "Teilweise", "value": "teilweise" },
+            { "id": "opt3", "text": "Nein", "value": "nein" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "slug": "tools",
+      "title": "Tools",
+      "questions": [
+        {
+          "id": "q3",
+          "text": "Welche der folgenden Tools nutzt du bereits für Beteiligung? (Mehrfachauswahl möglich)",
+          "type": "multipleChoice",
+          "options": [
+            { "id": "opt1", "text": "Digitale Umfragen", "value": "umfragen" },
+            { "id": "opt2", "text": "Kollaborative Whiteboards", "value": "whiteboards" },
+            { "id": "opt3", "text": "Video-Konferenzen", "value": "video" },
+            { "id": "opt4", "text": "Chat-Plattformen", "value": "chat" }
+          ]
+        },
+        {
+          "id": "q4",
+          "text": "Welches Tool würdest du dir für bessere Beteiligung wünschen?",
+          "type": "textInput",
+          "placeholder": "Deine Antwort hier..."
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "slug": "zielgruppe",
+      "title": "Zielgruppe",
+      "questions": [
+        {
+          "id": "q5",
+          "text": "Welche Zielgruppe möchtest du besser beteiligen?",
+          "type": "singleChoice",
+          "options": [
+            { "id": "opt1", "text": "Schulumfrage - Schüler*innen", "value": "schueler" },
+            { "id": "opt2", "text": "Stadtbeteiligung", "value": "stadt" },
+            { "id": "opt3", "text": "Beteiligungskompetenz aufbauen", "value": "kompetenz" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "slug": "du",
+      "title": "Du",
+      "questions": [
+        {
+          "id": "q6",
+          "text": "Was ist dein Ziel bei der Förderung von Beteiligung?",
+          "type": "textInput",
+          "placeholder": "Dein Ziel..."
+        },
+        {
+          "id": "q7",
+          "text": "Welche Aussage trifft am ehesten auf dich zu?",
+          "type": "singleChoice",
+          "options": [
+            { "id": "opt1", "text": "Ich möchte mehr Selbstbestimmung fördern", "value": "selbstbestimmung" },
+            { "id": "opt2", "text": "Ich möchte bessere Entscheidungen durch Beteiligung erreichen", "value": "entscheidungen" },
+            { "id": "opt3", "text": "Ich möchte Zukunft gemeinsam gestalten", "value": "zukunft" }
+          ]
+        }
+      ]
+    }
+  ],
+  "resultMessages": {
+    "defaultIntro": "Hier ist dein persönliches Beteiligungsprofil:",
+    "participationProfileTitle": "1. Partizipationsprofil:",
+    "recommendationsTitle": "2. Empfehlungen:",
+    "explanationsTitle": "3. Erklärungen:",
+    "practicalTipsTitle": "4. Praktische Tipps:"
+  }
+} 
