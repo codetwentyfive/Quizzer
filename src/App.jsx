@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import ProgressBar from './components/ProgressBar';
 import QuestionCard from './components/QuestionCard';
 import ResultsPage from './components/ResultsPage';
+import StartScreen from './components/StartScreen';
 import quizData from './data/questions.json';
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [quizStarted, setQuizStarted] = useState(false);
 
   const currentSection = sections[currentSectionIndex];
   const currentQuestion = currentSection ? currentSection.questions[currentQuestionIndex] : null;
@@ -69,12 +71,21 @@ const App = () => {
     setCurrentSectionIndex(0);
     setCurrentQuestionIndex(0);
     setShowResults(false);
+    setQuizStarted(false);
+  };
+
+  const handleStartQuiz = () => {
+    setQuizStarted(true);
   };
 
   // Navigation button disabled states
   const isBackDisabled = currentSectionIndex === 0 && currentQuestionIndex === 0;
-  const isNextButtonDisabled = !currentAnswer && currentQuestion?.type !== 'textInput';
+  const isNextButtonDisabled = currentQuestion && !answers[currentQuestion.id] && currentQuestion?.type !== 'textInput';
   
+  if (!quizStarted) {
+    return <StartScreen onStartQuiz={handleStartQuiz} />;
+  }
+
   if (showResults) {
     return (
       <div className="min-h-screen bg-soft-pink py-12 px-4 sm:px-6">
