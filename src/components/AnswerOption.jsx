@@ -34,7 +34,7 @@ const AnswerOption = ({ option, type, selected, onChange, isSquare, backgroundSv
       style={{
         backgroundImage: isSelected || !backgroundSvg ? 'none' : `url(${backgroundSvg})`,
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'bottom right',
+        backgroundPosition: 'bottom left',
         backgroundSize: '90%'
       }}
     >

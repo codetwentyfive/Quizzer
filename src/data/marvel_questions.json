@@ -1,0 +1,90 @@
+{
+  "quizTitle": "Marvel Charakter Quiz",
+  "sections": [
+    {
+      "id": "s1",
+      "slug": "helden",
+      "title": "Helden",
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Welcher dieser Charaktere ist KEIN Gründungsmitglied der Avengers im Marvel Cinematic Universe (MCU)?",
+          "type": "singleChoice",
+          "options": [
+            { "id": "opt1", "text": "Iron Man", "value": "iron_man" },
+            { "id": "opt2", "text": "Captain America", "value": "captain_america" },
+            { "id": "opt3", "text": "Spider-Man", "value": "spider_man" },
+            { "id": "opt4", "text": "Thor", "value": "thor" },
+            { "id": "opt5", "text": "Hulk", "value": "hulk" }
+          ]
+        },
+        {
+          "id": "q2",
+          "text": "Was ist der bürgerliche Name von Spider-Man?",
+          "type": "textInput",
+          "placeholder": "Dein Antwort hier..."
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "slug": "schurken",
+      "title": "Schurken",
+      "questions": [
+        {
+          "id": "q3",
+          "text": "Welche der folgenden Schurken sind bekannt dafür, Feinde von Spider-Man zu sein? (Mehrfachauswahl möglich)",
+          "type": "multipleChoice",
+          "options": [
+            { "id": "opt1", "text": "Green Goblin", "value": "green_goblin" },
+            { "id": "opt2", "text": "Doctor Octopus", "value": "dr_octopus" },
+            { "id": "opt3", "text": "Red Skull", "value": "red_skull" },
+            { "id": "opt4", "text": "Venom", "value": "venom" }
+          ]
+        },
+        {
+          "id": "q4",
+          "text": "Wer ist der Hauptantagonist im Film 'Avengers: Infinity War'?",
+          "type": "singleChoice",
+          "options": [
+            { "id": "opt1", "text": "Loki", "value": "loki" },
+            { "id": "opt2", "text": "Ultron", "value": "ultron" },
+            { "id": "opt3", "text": "Thanos", "value": "thanos" },
+            { "id": "opt4", "text": "Hela", "value": "hela" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "slug": "kraefte",
+      "title": "Kräfte & Artefakte",
+      "questions": [
+        {
+          "id": "q5",
+          "text": "Aus welchem Material ist Captain Americas Schild hauptsächlich gemacht?",
+          "type": "singleChoice",
+          "options": [
+            { "id": "opt1", "text": "Adamantium", "value": "adamantium" },
+            { "id": "opt2", "text": "Vibranium", "value": "vibranium" },
+            { "id": "opt3", "text": "Uru", "value": "uru" },
+            { "id": "opt4", "text": "Stahl", "value": "stahl" }
+          ]
+        },
+        {
+          "id": "q6",
+          "text": "Nenne einen Charakter, der Magie wirken kann.",
+          "type": "textInput",
+          "placeholder": "Name des Charakters..."
+        }
+      ]
+    }
+  ],
+  "resultMessages": {
+    "defaultIntro": "Hier ist dein persönliches Marvel-Wissensprofil:",
+    "knowledgeProfileTitle": "1. Wissensprofil:",
+    "recommendationsTitle": "2. Nächste Schritte im MCU:",
+    "explanationsTitle": "3. Charakter-Hintergründe:",
+    "comicTipsTitle": "4. Comic-Empfehlungen:"
+  }
+} 

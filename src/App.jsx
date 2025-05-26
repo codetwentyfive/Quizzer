@@ -4,7 +4,7 @@ import ProgressBar from './components/ProgressBar';
 import QuestionCard from './components/QuestionCard';
 import ResultsPage from './components/ResultsPage';
 import StartScreen from './components/StartScreen';
-import quizData from './data/questions.json';
+import quizData from './data/marvel_questions.json';
 
 const App = () => {
   const [sections] = useState(quizData.sections);
