@@ -1,0 +1,148 @@
+{
+  "_instructions": "This is a template for generating quiz JSON files. Remove this _instructions field and _comment fields in the final output.",
+  "_comment_structure": "Root level requires: quizTitle (string), sections (array), resultMessages (object)",
+  
+  "quizTitle": "Template Quiz - Replace with Your Topic",
+  
+  "sections": [
+    {
+      "_comment": "Section 1 - Introduction/Assessment",
+      "id": "s1",
+      "slug": "introduction",
+      "title": "Introduction & Assessment",
+      "questions": [
+        {
+          "_comment": "Single choice with routing - determines user path",
+          "id": "q1",
+          "text": "What is your experience level with [TOPIC]?",
+          "type": "singleChoice",
+          "options": [
+            { "id": "opt1", "text": "Complete beginner", "value": "beginner" },
+            { "id": "opt2", "text": "Some experience", "value": "intermediate" },
+            { "id": "opt3", "text": "Very experienced", "value": "advanced" }
+          ],
+          "routing": {
+            "opt1": { "type": "section", "target": "basics" },
+            "opt3": { "type": "section", "target": "advanced" }
+          }
+        },
+        {
+          "_comment": "Text input question - no routing needed",
+          "id": "q2",
+          "text": "What interests you most about [TOPIC]?",
+          "type": "textInput",
+          "placeholder": "Share your thoughts here..."
+        }
+      ]
+    },
+    {
+      "_comment": "Section 2 - Basic Level",
+      "id": "s2",
+      "slug": "basics",
+      "title": "Basic Knowledge",
+      "questions": [
+        {
+          "_comment": "Single choice - fundamental concepts",
+          "id": "q3",
+          "text": "Which of these is a basic concept in [TOPIC]?",
+          "type": "singleChoice",
+          "options": [
+            { "id": "opt1", "text": "Option A", "value": "option_a" },
+            { "id": "opt2", "text": "Option B", "value": "option_b" },
+            { "id": "opt3", "text": "Option C", "value": "option_c" },
+            { "id": "opt4", "text": "Option D", "value": "option_d" }
+          ]
+        },
+        {
+          "_comment": "Multiple choice - can select several answers",
+          "id": "q4",
+          "text": "Which of these tools/concepts are you familiar with? (Select all that apply)",
+          "type": "multipleChoice",
+          "options": [
+            { "id": "opt1", "text": "Tool/Concept 1", "value": "tool1" },
+            { "id": "opt2", "text": "Tool/Concept 2", "value": "tool2" },
+            { "id": "opt3", "text": "Tool/Concept 3", "value": "tool3" },
+            { "id": "opt4", "text": "Tool/Concept 4", "value": "tool4" }
+          ],
+          "routing": {
+            "opt4": { "type": "question", "target": "q6" }
+          }
+        }
+      ]
+    },
+    {
+      "_comment": "Section 3 - Intermediate Level",
+      "id": "s3",
+      "slug": "intermediate",
+      "title": "Intermediate Knowledge",
+      "questions": [
+        {
+          "_comment": "Single choice with early termination option",
+          "id": "q5",
+          "text": "How would you rate the difficulty of [SPECIFIC CONCEPT]?",
+          "type": "singleChoice",
+          "options": [
+            { "id": "opt1", "text": "Very easy", "value": "very_easy" },
+            { "id": "opt2", "text": "Moderate", "value": "moderate" },
+            { "id": "opt3", "text": "Very difficult", "value": "difficult" },
+            { "id": "opt4", "text": "I'm not familiar with this", "value": "unfamiliar" }
+          ],
+          "routing": {
+            "opt4": { "type": "end" }
+          }
+        }
+      ]
+    },
+    {
+      "_comment": "Section 4 - Advanced Level",
+      "id": "s4",
+      "slug": "advanced",
+      "title": "Advanced Knowledge",
+      "questions": [
+        {
+          "_comment": "Advanced multiple choice question",
+          "id": "q6",
+          "text": "Which advanced techniques have you used? (Select all that apply)",
+          "type": "multipleChoice",
+          "options": [
+            { "id": "opt1", "text": "Advanced Technique 1", "value": "tech1" },
+            { "id": "opt2", "text": "Advanced Technique 2", "value": "tech2" },
+            { "id": "opt3", "text": "Advanced Technique 3", "value": "tech3" }
+          ]
+        },
+        {
+          "_comment": "Open-ended advanced question",
+          "id": "q7",
+          "text": "Describe a complex challenge you've solved using [TOPIC]:",
+          "type": "textInput",
+          "placeholder": "Describe your experience and approach..."
+        }
+      ]
+    }
+  ],
+  
+  "_comment_results": "Customize these result message titles based on your quiz topic",
+  "resultMessages": {
+    "defaultIntro": "Here are your personalized results based on your responses:",
+    "knowledgeProfileTitle": "1. Your Knowledge Profile:",
+    "recommendationsTitle": "2. Recommended Next Steps:",
+    "explanationsTitle": "3. Key Concepts to Explore:",
+    "comicTipsTitle": "4. Additional Resources:"
+  },
+  
+  "_generation_notes": {
+    "id_patterns": {
+      "sections": "s1, s2, s3, s4, s5...",
+      "questions": "q1, q2, q3, q4, q5...",
+      "options": "opt1, opt2, opt3, opt4..."
+    },
+    "slug_format": "lowercase-with-hyphens",
+    "routing_types": ["section", "question", "end"],
+    "question_types": ["singleChoice", "multipleChoice", "textInput"],
+    "recommended_distribution": {
+      "singleChoice": "60% of questions",
+      "multipleChoice": "25% of questions", 
+      "textInput": "15% of questions"
+    }
+  }
+} 

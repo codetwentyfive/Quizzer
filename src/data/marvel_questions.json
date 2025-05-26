@@ -16,7 +16,13 @@
             { "id": "opt3", "text": "Spider-Man", "value": "spider_man" },
             { "id": "opt4", "text": "Thor", "value": "thor" },
             { "id": "opt5", "text": "Hulk", "value": "hulk" }
-          ]
+          ],
+          "routing": {
+            "opt3": {
+              "type": "section",
+              "target": "schurken"
+            }
+          }
         },
         {
           "id": "q2",
@@ -40,7 +46,13 @@
             { "id": "opt2", "text": "Doctor Octopus", "value": "dr_octopus" },
             { "id": "opt3", "text": "Red Skull", "value": "red_skull" },
             { "id": "opt4", "text": "Venom", "value": "venom" }
-          ]
+          ],
+          "routing": {
+            "opt3": {
+              "type": "question",
+              "target": "q5"
+            }
+          }
         },
         {
           "id": "q4",
@@ -51,7 +63,12 @@
             { "id": "opt2", "text": "Ultron", "value": "ultron" },
             { "id": "opt3", "text": "Thanos", "value": "thanos" },
             { "id": "opt4", "text": "Hela", "value": "hela" }
-          ]
+          ],
+          "routing": {
+            "opt3": {
+              "type": "end"
+            }
+          }
         }
       ]
     },

@@ -1,0 +1,196 @@
+{
+  "quizTitle": "Beispiel-Quiz: Nachhaltigkeit",
+  "sections": [
+    {
+      "id": "section1",
+      "title": "Grundlagen der Nachhaltigkeit",
+      "slug": "grundlagen",
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Was verstehen Sie unter Nachhaltigkeit?",
+          "type": "singleChoice",
+          "options": [
+            {
+              "id": "opt1",
+              "text": "Nur Umweltschutz",
+              "value": "environment_only"
+            },
+            {
+              "id": "opt2",
+              "text": "Gleichgewicht zwischen Umwelt, Wirtschaft und Gesellschaft",
+              "value": "balanced_approach"
+            },
+            {
+              "id": "opt3",
+              "text": "Wirtschaftliches Wachstum",
+              "value": "economic_growth"
+            }
+          ],
+          "routing": {
+            "opt1": {
+              "type": "question",
+              "target": "q3"
+            },
+            "opt2": {
+              "type": "section",
+              "target": "verhalten"
+            },
+            "opt3": {
+              "type": "question",
+              "target": "q3"
+            }
+          }
+        },
+        {
+          "id": "q2",
+          "text": "Welche Bereiche gehören zu den drei Säulen der Nachhaltigkeit?",
+          "type": "multipleChoice",
+          "options": [
+            {
+              "id": "opt4",
+              "text": "Ökologie",
+              "value": "ecology"
+            },
+            {
+              "id": "opt5",
+              "text": "Ökonomie",
+              "value": "economy"
+            },
+            {
+              "id": "opt6",
+              "text": "Soziales",
+              "value": "social"
+            },
+            {
+              "id": "opt7",
+              "text": "Technologie",
+              "value": "technology"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "text": "Beschreiben Sie kurz, was Nachhaltigkeit für Sie persönlich bedeutet:",
+          "type": "textInput",
+          "placeholder": "Ihre persönliche Definition von Nachhaltigkeit..."
+        }
+      ]
+    },
+    {
+      "id": "section2",
+      "title": "Nachhaltiges Verhalten",
+      "slug": "verhalten",
+      "questions": [
+        {
+          "id": "q4",
+          "text": "Wie oft nutzen Sie öffentliche Verkehrsmittel?",
+          "type": "singleChoice",
+          "options": [
+            {
+              "id": "opt8",
+              "text": "Täglich",
+              "value": "daily"
+            },
+            {
+              "id": "opt9",
+              "text": "Mehrmals pro Woche",
+              "value": "weekly"
+            },
+            {
+              "id": "opt10",
+              "text": "Selten",
+              "value": "rarely"
+            },
+            {
+              "id": "opt11",
+              "text": "Nie",
+              "value": "never"
+            }
+          ]
+        },
+        {
+          "id": "q5",
+          "text": "Welche nachhaltigen Praktiken wenden Sie bereits an?",
+          "type": "multipleChoice",
+          "options": [
+            {
+              "id": "opt12",
+              "text": "Mülltrennung",
+              "value": "waste_separation"
+            },
+            {
+              "id": "opt13",
+              "text": "Energiesparen",
+              "value": "energy_saving"
+            },
+            {
+              "id": "opt14",
+              "text": "Regionale Produkte kaufen",
+              "value": "local_products"
+            },
+            {
+              "id": "opt15",
+              "text": "Wassersparen",
+              "value": "water_saving"
+            },
+            {
+              "id": "opt16",
+              "text": "Fahrrad fahren",
+              "value": "cycling"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "section3",
+      "title": "Zukunftsperspektiven",
+      "slug": "zukunft",
+      "questions": [
+        {
+          "id": "q6",
+          "text": "Wie optimistisch sind Sie bezüglich der Zukunft unseres Planeten?",
+          "type": "singleChoice",
+          "options": [
+            {
+              "id": "opt17",
+              "text": "Sehr optimistisch",
+              "value": "very_optimistic"
+            },
+            {
+              "id": "opt18",
+              "text": "Eher optimistisch",
+              "value": "somewhat_optimistic"
+            },
+            {
+              "id": "opt19",
+              "text": "Neutral",
+              "value": "neutral"
+            },
+            {
+              "id": "opt20",
+              "text": "Eher pessimistisch",
+              "value": "somewhat_pessimistic"
+            },
+            {
+              "id": "opt21",
+              "text": "Sehr pessimistisch",
+              "value": "very_pessimistic"
+            }
+          ]
+        },
+        {
+          "id": "q7",
+          "text": "Was sind Ihre wichtigsten Motivationen für nachhaltiges Handeln?",
+          "type": "textInput",
+          "placeholder": "Beschreiben Sie Ihre Motivationen..."
+        }
+      ]
+    }
+  ],
+  "resultMessages": {
+    "defaultIntro": "Vielen Dank für Ihre Teilnahme am Nachhaltigkeits-Quiz!",
+    "conclusion": "Ihre Antworten helfen uns, bessere Programme für nachhaltiges Leben zu entwickeln."
+  }
+} 

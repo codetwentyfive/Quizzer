@@ -5,14 +5,15 @@ import SwirlDecoration from '../assets/SwirlDecoration.svg'; // Import regular S
 import SwirlDecorationCardSmall from '../assets/SwirlDecorationCardSmall.svg'; // Import small SVG
 
 const QuestionCard = ({ question, answer, onAnswerChange }) => {
+  if (!question) return null;
+
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { 
+      transition: {
         duration: 0.5,
-        when: "beforeChildren",
         staggerChildren: 0.1
       }
     },
@@ -26,6 +27,23 @@ const QuestionCard = ({ question, answer, onAnswerChange }) => {
   const itemVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0 }
+  };
+
+  const handleKeyDown = (event, optionValue) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      if (question.type === 'multipleChoice') {
+        const newSelected = answer ? [...answer] : [];
+        const isSelected = newSelected.includes(optionValue);
+        if (isSelected) {
+          onAnswerChange(newSelected.filter(val => val !== optionValue));
+        } else {
+          onAnswerChange([...newSelected, optionValue]);
+        }
+      } else {
+        onAnswerChange(optionValue);
+      }
+    }
   };
 
   const renderQuestionInput = () => {
@@ -56,44 +74,94 @@ const QuestionCard = ({ question, answer, onAnswerChange }) => {
 
     switch (question.type) {
       case 'singleChoice':
-      case 'multipleChoice':
         return (
-          <div className={optionContainerClassName}>
-            {question.options.map((option) => (
-              <motion.div 
-                key={option.id} 
-                variants={itemVariants}
-                className={motionDivClassName} // Apply square and flex centering here
+          <div 
+            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            role="radiogroup"
+            aria-labelledby="question-text"
+            aria-required="true"
+          >
+            {question.options.map((option, index) => (
+              <div
+                key={option.id}
+                role="radio"
+                aria-checked={answer === option.value}
+                tabIndex={0}
+                onKeyDown={(e) => handleKeyDown(e, option.value)}
+                className="focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg"
+                aria-label={`Option ${index + 1}: ${option.text}`}
               >
                 <AnswerOption
                   option={option}
                   type={question.type}
-                  selected={question.type === 'multipleChoice' ? (answer || []) : answer}
+                  selected={answer}
                   onChange={onAnswerChange}
-                  // Pass a prop if AnswerOption itself needs to adapt for square layout
-                  isSquare={motionDivClassName.includes('aspect-square')}
-                  backgroundSvg={optionBackgroundSvg} // Pass the determined SVG
                 />
-              </motion.div>
+              </div>
             ))}
           </div>
         );
-        
+
+      case 'multipleChoice':
+        return (
+          <div 
+            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            role="group"
+            aria-labelledby="question-text"
+            aria-describedby="multiple-choice-hint"
+          >
+            <div id="multiple-choice-hint" className="sr-only">
+              Mehrfachauswahl möglich. Verwenden Sie die Eingabetaste oder Leertaste zum Auswählen.
+            </div>
+            {question.options.map((option, index) => (
+              <div
+                key={option.id}
+                role="checkbox"
+                aria-checked={answer && answer.includes(option.value)}
+                tabIndex={0}
+                onKeyDown={(e) => handleKeyDown(e, option.value)}
+                className="focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg"
+                aria-label={`Option ${index + 1}: ${option.text}`}
+              >
+                <AnswerOption
+                  option={option}
+                  type={question.type}
+                  selected={answer}
+                  onChange={onAnswerChange}
+                />
+              </div>
+            ))}
+          </div>
+        );
+
       case 'textInput':
         return (
-          <motion.div variants={itemVariants} className="mt-6">
+          <div className="w-full">
+            <label htmlFor="text-input" className="sr-only">
+              Ihre Antwort
+            </label>
             <textarea
-              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue"
-              placeholder={question.placeholder || "Deine Antwort..."}
-              rows={4}
+              id="text-input"
               value={answer || ''}
               onChange={(e) => onAnswerChange(e.target.value)}
+              placeholder={question.placeholder || 'Ihre Antwort hier eingeben...'}
+              className="w-full p-4 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+              rows={4}
+              aria-describedby="text-input-hint"
+              aria-required="false"
             />
-          </motion.div>
+            <div id="text-input-hint" className="text-sm text-gray-500 mt-2">
+              Geben Sie Ihre Antwort in das Textfeld ein. Dieses Feld ist optional.
+            </div>
+          </div>
         );
-        
+
       default:
-        return null;
+        return (
+          <div className="text-red-500" role="alert">
+            Unbekannter Fragetyp: {question.type}
+          </div>
+        );
     }
   };
 
@@ -104,20 +172,35 @@ const QuestionCard = ({ question, answer, onAnswerChange }) => {
       initial="hidden"
       animate="visible"
       exit="exit"
+      role="main"
+      aria-live="polite"
     >
       {/* Decorative SVG background */}
       <motion.h2 
+        id="question-text"
         className="text-2xl font-extrabold mb-4 text-gray-800 z-10 relative"
         variants={itemVariants}
+        tabIndex={0}
       >
         {question.text}
       </motion.h2>
-      {/* Card content */}
-      <div className="z-10 relative">
-        {renderQuestionInput()}
+      
+      {/* Question Type Indicator */}
+      <div className="sr-only">
+        {question.type === 'singleChoice' && 'Einfachauswahl: Wählen Sie eine Option aus.'}
+        {question.type === 'multipleChoice' && 'Mehrfachauswahl: Sie können mehrere Optionen auswählen.'}
+        {question.type === 'textInput' && 'Texteingabe: Geben Sie Ihre Antwort in das Textfeld ein.'}
       </div>
+      
+      {/* Card content */}
+      <motion.div 
+        className="z-10 relative"
+        variants={itemVariants}
+      >
+        {renderQuestionInput()}
+      </motion.div>
     </motion.div>
   );
 };
 
-export default QuestionCard; 
+export default React.memo(QuestionCard); 
