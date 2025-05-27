@@ -1,0 +1,160 @@
+{
+  "_anweisungen": "Dies ist eine Vorlage für die Erstellung von Quiz-JSON-Dateien. Entfernen Sie das _anweisungen Feld und _kommentar Felder in der finalen Ausgabe.",
+  "_kommentar_struktur": "Root-Ebene benötigt: quizTitle (String), sections (Array), resultMessages (Objekt)",
+  
+  "quizTitle": "Vorlage Quiz - Ersetzen Sie dies mit Ihrem Thema",
+  
+  "sections": [
+    {
+      "_kommentar": "Sektion 1 - Einführung/Bewertung",
+      "id": "s1",
+      "slug": "einfuehrung",
+      "title": "Einführung & Bewertung",
+      "questions": [
+        {
+          "_kommentar": "Einfachauswahl mit Routing - bestimmt Benutzerpfad",
+          "id": "q1",
+          "text": "Wie ist Ihr Erfahrungslevel mit [THEMA]?",
+          "type": "singleChoice",
+          "options": [
+            { "id": "opt1", "text": "Kompletter Anfänger", "value": "anfaenger" },
+            { "id": "opt2", "text": "Etwas Erfahrung", "value": "mittelstufe" },
+            { "id": "opt3", "text": "Sehr erfahren", "value": "fortgeschritten" }
+          ],
+          "routing": {
+            "opt1": { "type": "section", "target": "grundlagen" },
+            "opt3": { "type": "section", "target": "fortgeschritten" }
+          }
+        },
+        {
+          "_kommentar": "Texteingabe-Frage - kein Routing benötigt",
+          "id": "q2",
+          "text": "Was interessiert Sie am meisten an [THEMA]?",
+          "type": "textInput",
+          "placeholder": "Teilen Sie Ihre Gedanken hier mit..."
+        }
+      ]
+    },
+    {
+      "_kommentar": "Sektion 2 - Grundlagen-Level",
+      "id": "s2",
+      "slug": "grundlagen",
+      "title": "Grundlagenwissen",
+      "questions": [
+        {
+          "_kommentar": "Einfachauswahl - fundamentale Konzepte",
+          "id": "q3",
+          "text": "Welches davon ist ein grundlegendes Konzept in [THEMA]?",
+          "type": "singleChoice",
+          "options": [
+            { "id": "opt1", "text": "Option A", "value": "option_a" },
+            { "id": "opt2", "text": "Option B", "value": "option_b" },
+            { "id": "opt3", "text": "Option C", "value": "option_c" },
+            { "id": "opt4", "text": "Option D", "value": "option_d" }
+          ]
+        },
+        {
+          "_kommentar": "Mehrfachauswahl - kann mehrere Antworten auswählen",
+          "id": "q4",
+          "text": "Mit welchen dieser Tools/Konzepte sind Sie vertraut? (Wählen Sie alle zutreffenden aus)",
+          "type": "multipleChoice",
+          "options": [
+            { "id": "opt1", "text": "Tool/Konzept 1", "value": "tool1" },
+            { "id": "opt2", "text": "Tool/Konzept 2", "value": "tool2" },
+            { "id": "opt3", "text": "Tool/Konzept 3", "value": "tool3" },
+            { "id": "opt4", "text": "Tool/Konzept 4", "value": "tool4" }
+          ],
+          "routing": {
+            "opt4": { "type": "question", "target": "q6" }
+          }
+        }
+      ]
+    },
+    {
+      "_kommentar": "Sektion 3 - Mittelstufen-Level",
+      "id": "s3",
+      "slug": "mittelstufe",
+      "title": "Mittelstufenwissen",
+      "questions": [
+        {
+          "_kommentar": "Einfachauswahl mit vorzeitiger Beendigung",
+          "id": "q5",
+          "text": "Wie würden Sie die Schwierigkeit von [SPEZIFISCHES KONZEPT] bewerten?",
+          "type": "singleChoice",
+          "options": [
+            { "id": "opt1", "text": "Sehr einfach", "value": "sehr_einfach" },
+            { "id": "opt2", "text": "Mittelmäßig", "value": "mittlere_schwierigkeit" },
+            { "id": "opt3", "text": "Sehr schwierig", "value": "schwierig" },
+            { "id": "opt4", "text": "Ich bin nicht vertraut damit", "value": "unbekannt" }
+          ],
+          "routing": {
+            "opt4": { "type": "end" }
+          }
+        }
+      ]
+    },
+    {
+      "_kommentar": "Sektion 4 - Fortgeschrittenen-Level",
+      "id": "s4",
+      "slug": "fortgeschritten",
+      "title": "Fortgeschrittenes Wissen",
+      "questions": [
+        {
+          "_kommentar": "Fortgeschrittene Mehrfachauswahl-Frage",
+          "id": "q6",
+          "text": "Welche fortgeschrittenen Techniken haben Sie verwendet? (Wählen Sie alle zutreffenden aus)",
+          "type": "multipleChoice",
+          "options": [
+            { "id": "opt1", "text": "Fortgeschrittene Technik 1", "value": "tech1" },
+            { "id": "opt2", "text": "Fortgeschrittene Technik 2", "value": "tech2" },
+            { "id": "opt3", "text": "Fortgeschrittene Technik 3", "value": "tech3" }
+          ]
+        },
+        {
+          "_kommentar": "Offene fortgeschrittene Frage",
+          "id": "q7",
+          "text": "Beschreiben Sie eine komplexe Herausforderung, die Sie mit [THEMA] gelöst haben:",
+          "type": "textInput",
+          "placeholder": "Beschreiben Sie Ihre Erfahrung und Herangehensweise..."
+        }
+      ]
+    }
+  ],
+  
+  "_kommentar_ergebnisse": "Passen Sie diese Ergebnisnachrichten-Titel an Ihr Quiz-Thema an",
+  "resultMessages": {
+    "defaultIntro": "Hier sind Ihre personalisierten Ergebnisse basierend auf Ihren Antworten:",
+    "knowledgeProfileTitle": "1. Ihr Wissensprofil:",
+    "recommendationsTitle": "2. Empfohlene nächste Schritte:",
+    "explanationsTitle": "3. Wichtige Konzepte zum Erkunden:",
+    "comicTipsTitle": "4. Zusätzliche Ressourcen:"
+  },
+  
+  "_generierungs_hinweise": {
+    "id_muster": {
+      "sections": "s1, s2, s3, s4, s5...",
+      "questions": "q1, q2, q3, q4, q5...",
+      "options": "opt1, opt2, opt3, opt4..."
+    },
+    "slug_format": "kleinbuchstaben-mit-bindestrichen",
+    "routing_typen": ["section", "question", "end"],
+    "frage_typen": ["singleChoice", "multipleChoice", "textInput"],
+    "empfohlene_verteilung": {
+      "singleChoice": "60% der Fragen",
+      "multipleChoice": "25% der Fragen", 
+      "textInput": "15% der Fragen"
+    },
+    "verwendung": {
+      "1": "Ersetzen Sie [THEMA] mit Ihrem spezifischen Thema",
+      "2": "Passen Sie Fragen und Optionen an Ihr Thema an",
+      "3": "Aktualisieren Sie Routing-Ziele entsprechend Ihrer Struktur",
+      "4": "Entfernen Sie alle _kommentar und _anweisungen Felder",
+      "5": "Testen Sie das Quiz im Flow-Editor zur Visualisierung"
+    },
+    "routing_beispiele": {
+      "zu_sektion": "{ \"type\": \"section\", \"target\": \"grundlagen\" }",
+      "zu_frage": "{ \"type\": \"question\", \"target\": \"q5\" }",
+      "quiz_beenden": "{ \"type\": \"end\" }"
+    }
+  }
+} 
